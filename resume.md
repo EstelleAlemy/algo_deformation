@@ -3,9 +3,7 @@
 **Objectif:** Déterminer une transforamtion spatial qui relie les positions dans une image aux positions correspondantes dans une ou plusieurs autres images.
 
 Que l'on peut formuler comme ci-dessous:
-$
-\max_{A,B}
-$ 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
 
 ## 1) La distance de Hausdorff
 
