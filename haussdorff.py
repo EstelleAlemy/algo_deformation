@@ -8,7 +8,7 @@ Created on Tue Dec  4 13:28:11 2018
  Distance de Hausdorff
 """
 import numpy as np
-from scipy.spatial import  distance
+from scipy.spatial.distance import directed_hausdorff
 # Compute the eculidean distan
 def euclidean(a,b):
     return (np.sqrt((a-b)**2))
@@ -28,16 +28,16 @@ def mat_distance(u,v):
     
 def haussdorf(u,v):
     mat_dist=mat_distance(u,v)
-    t1=min(np.amax(mat_dist, axis=0))
-    t2=min(np.amax(mat_dist, axis=1))
-    return(t1+t2)
+    h1=max(np.amin(mat_dist, axis=0))
+    h2=max(np.amin(mat_dist, axis=1))
+    return (max(h1,h2))
  
 N=5
-b=np.random.randint(10, size=N)
-a=np.random.randint(10, size=N)
+b=np.random.randint(1,10, size=N)
+a=np.random.randint(1,10, size=N)
 
 a=a.reshape(N,1)
 b=b.reshape(N,1)
 c=haussdorf(a,b)
-d=distance.directed_hausdorff(a,b)
+d=max(directed_hausdorff(a, b)[0], directed_hausdorff(b, a)[0])
 
