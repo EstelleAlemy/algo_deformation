@@ -237,8 +237,8 @@ La procédure suit en générale 3 étapes :
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B={B-\bar{b}}"/>
 
   - mise à l'échelle : correspond à une standardisation des données (division par la variance)
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{a_i-\bar{a}}}{n}"/>
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{b_i-\bar{b}}}{n}"/>
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(a_i-\bar{a})^2}}}{n}"/>
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(b_i-\bar{b})^2}}}{n}"/>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A=\frac{A}{s_a}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B=\frac{B}{s_b}"/>
