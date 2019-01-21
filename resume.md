@@ -4,6 +4,8 @@
 
 Que l'on peut formuler comme ci-dessous:
 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\min_{t\in{T}{f(I1,t(I2))}}"/>
+
 ## 1) La distance de Hausdorff
 
 ### définition théorique
