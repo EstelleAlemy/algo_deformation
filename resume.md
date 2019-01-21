@@ -210,3 +210,9 @@ class QTree3D():
 **Résultats :**
 
 Images résultante de l'application d'une octree sur un nuage de points (code exemple dans test.py)
+
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/point.png"/>
+
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/octree.png"/>
+
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/octree_plane.png"/>
