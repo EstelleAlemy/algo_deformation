@@ -230,15 +230,17 @@ La procédure suit en générale 3 étapes :
 2. Suppression des composante rotation, translation et échelles 
 
   - translation : correspond à un centrage des données sur l'origine
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\bar{a}=\frac{\sum_{i=1}^{n}{a_i}}{n}"/>
+
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\bar{a}=\frac{\sum_{i=1}^{n}{a_i}}{n}"/> et 
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\bar{b}=\frac{\sum_{i=1}^{n}{b_i}}{n}"/>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A={A-\bar{a}}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B={B-\bar{b}}"/>
 
   - mise à l'échelle : correspond à une standardisation des données (division par la variance)
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(a_i-\bar{a})^2}}}{n}"/>
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(b_i-\bar{b})^2}}}{n}"/>
+
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(a_i-\bar{a})^2}}}{n}"/> et 
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_b=\frac{\sum_{i=1}^{n}{\sqrt{(b_i-\bar{b})^2}}}{n}"/>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A=\frac{A}{s_a}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B=\frac{B}{s_b}"/>
