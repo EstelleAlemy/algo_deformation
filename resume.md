@@ -72,12 +72,15 @@ d=max(directed_hausdorff(a, b)[0], directed_hausdorff(b, a)[0])
 
 ## 2)Implémentation Octree
 
-Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfant. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. Dans notre cas l'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points de l'octree.
+Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfant. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. L'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points noeuds de l'octree.
 
 
 ### a) Quadtree
 
 Une quadtree est une structure arbre où chaque noeud possèdent quatre enfant. On l'utilise pour partitionner un espace bidimensionnel en le subdivisent récursivement en quatre noeuds.
+
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quadtree.png"/>
+
 On a commencé par travaillé sur des nuage de points en 2D dimensions et donc implémenter une quadtree dans ce cas. 
 L'ensemble des implémentations pour la quadtree sont définit dans le fichier **qdree_struct.py** qui implémente des objet de type octree et quadtree.
 
