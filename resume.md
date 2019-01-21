@@ -11,6 +11,14 @@ Que l'on peut formuler comme ci-dessous:
 - T ensemble de des transformation admissible
 - f critère de dissimilarité ou de similarité
 
+3 critères pour composer un algorithme de déformation/recalage :
+
+    * La mesure de similarité(distance) qui définit la concordance de deux images.
+    * le modèle de transformation, qui spécifie la manière de l’image source peut être modifiée pour correspondre à la cible.
+    * le processus d'optimisation qui fait varier les paramètres du modèle de transformation pour maximiser l'appariement critère.
+
+
+
 ## 1) La distance de Hausdorff
 
 ### définition théorique
