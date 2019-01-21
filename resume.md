@@ -4,7 +4,12 @@
 
 Que l'on peut formuler comme ci-dessous:
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\min_{t\in{T}{f(I1,t(I2))}}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\min{f(I1,t(I2))}_{t\in{T}}"/>
+
+- I1 et I2 images à recaler ou information extraites de ces images
+- t: transformation
+- T ensemble de des transformation admissible
+- f critère de dissimilarité ou de similarité
 
 ## 1) La distance de Hausdorff
 
