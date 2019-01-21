@@ -186,6 +186,12 @@ def get_node(self):
 On a appliquée notre algorithme sur un nuage de 100 points, on à fixé le nombre de points par espace à k=2 et le profondeur max à p=8.
 Et on obtient les figures suivantes
 
+Nuage de points de Base
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/nuage2D.png"/>
+
+Après quadtree
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quad2D.png"/>
+
 
 
 
