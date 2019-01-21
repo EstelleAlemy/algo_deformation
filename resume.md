@@ -231,9 +231,6 @@ La procédure suit en générale 3 étapes :
 
   - translation : correspond à un centrage des données sur l'origine
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(A)=\frac{\sum_{i=0,\i}^n a_{i}}{n}" />
-
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(B)=\frac{sum_{i=0,\i\neq}^n b_{i}}{n}" />
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A= A-c(A)"/>
 
