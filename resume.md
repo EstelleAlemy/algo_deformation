@@ -231,7 +231,7 @@ La procédure suit en générale 3 étapes :
 
   - translation : correspond à un centrage des données sur l'origine
 	
- 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(A)=\frac{\sum_{i=1}^{n}{ai}}{n} "/>
+ 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(A)=\frac{\sum_{i=1}^{n}{ai}}{n}"/>
 	
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(B)=\frac{\sum_{i=1}^{n}{bi}}{n}"/>
 
