@@ -87,7 +87,9 @@ L'ensemble des implémentations pour la quadtree sont définit dans le fichier *
 **Implémentation :**
 Pour implémenter on a suivit 4 étapes:
 
-- nuage de points: On creer un nuage de points aléatoires(valeur entre 0 et 100) de taille N, contients une liste de N points 2D ayant une coordonnées x et y.
+1. Nuage de points
+
+ On creer un nuage de points aléatoires(valeur entre 0 et 100) de taille N, contients une liste de N points 2D ayant une coordonnées x et y.
 ```
 class Nuage():
     def __init__(self, N):
@@ -106,8 +108,10 @@ class Nuage():
     def taille(self):
         return(self.N)
 ```
-- Initialisation: 
+2. Initialisation
+
 Notre structure va prendre un premier noeud racine qui contient les position x et y minimum (0,0) et les positions x,y maximal(101, 101), ainsi que l'ensemble des points du nuage de points et n'a pas d'enfants. 
+
 On définit aussi le treshold qui est le nombre de points maximale que l'on veut dans chaque partie de l'espace ainsi que la profondeur maximale qui est le nombre de récursion maximal autorisée (au-dela de cette limite l'algo s'arrête même-ci le treshold n'est pas atteint).
 ```
 class QTree():
