@@ -231,7 +231,7 @@ La procédure suit en générale 3 étapes :
 
   - translation : correspond à un centrage des données sur l'origine
 
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\bar{a}=\frac{\sum_{i=1}^{n}{a_i}}{n}"/> et 
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\bar{a}=\frac{\sum_{i=1}^{n}{a_i}}{n}"/>  
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\bar{b}=\frac{\sum_{i=1}^{n}{b_i}}{n}"/>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A={A-\bar{a}}"/>
@@ -239,9 +239,12 @@ La procédure suit en générale 3 étapes :
 
   - mise à l'échelle : correspond à une standardisation des données (division par la variance)
 
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(a_i-\bar{a})^2}}}{n}"/> et 
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(a_i-\bar{a})^2}}}{n}"/>  
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_b=\frac{\sum_{i=1}^{n}{\sqrt{(b_i-\bar{b})^2}}}{n}"/>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A=\frac{A}{s_a}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B=\frac{B}{s_b}"/>
   - Rotation : trouver l'ange de rotation optimale entre les 2 distributions
+
+On utilise la décomposition en valeurs singulières des distribution (SVD) pour obtenir
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;R=VU^{T}"/>
