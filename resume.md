@@ -1,6 +1,6 @@
-# Rapport
+# Rapport algorithme de déformation non rigide
 
-**Objectif:** Déterminer une transforamtion spatial qui relie les positions dans une image aux positions correspondantes dans une ou plusieurs autres images.
+**Objectif:** Déterminer une transformation spatial qui relie les positions dans une image aux positions correspondantes dans une ou plusieurs autres images. Puis appliquer cette transformation à des données 3D.
 
 Que l'on peut formuler comme ci-dessous:
 
@@ -19,7 +19,7 @@ Que l'on peut formuler comme ci-dessous:
 
 
 
-## 1) La distance de Hausdorff
+## 1) La distance de Hausdorff (Mesure de similarité)
 
 ### définition théorique
 La distance de Hausdorff est un outil mathématique permettant  mesure l’éloignement entre deux ensembles de point. Pour mesurer celle-ci, on prend la plus grandes de toutes les distances d’un ensemble, au point le plus proches dans un autres ensemble, ce qui se traduit par cette formule :
@@ -69,3 +69,59 @@ On a comparé notre résultat à la fonction **directed_hausdorff** de **_scipy.
 ```
 d=max(directed_hausdorff(a, b)[0], directed_hausdorff(b, a)[0])
 ```
+
+## 2)Implémentation Octree
+
+Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfant. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. Dans notre cas l'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points de l'octree.
+
+
+### a) Quadtree
+
+Une quadtree est une structure arbre où chaque noeud possèdent quatre enfant. On l'utilise pour partitionner un espace bidimensionnel en le subdivisent récursivement en quatre noeuds.
+On a commencé par travaillé sur des nuage de points en 2D dimensions et donc implémenter une quadtree dans ce cas. 
+L'ensemble des implémentations pour la quadtree sont définit dans le fichier **qdree_struct.py** qui implémente des objet de type octree et quadtree.
+
+**Implémentation :**
+Pour implémenter on a suivit 4 étapes:
+
+- implémentation d'un nuage de points: le nuage de taille N, contients une liste de N points 2D ayant une coordonnées x et y.
+```
+class Nuage():
+    def __init__(self, N):
+        self.x1 =list( np.random.randint(101, size=N) )
+        self.y1 = list(np.random.randint(101, size=N) )
+        self.N=N
+        
+    def add_point(self, Point):
+        self.x1.append(Point.x)
+        self.y1.append(Point.y)
+        self.N += 1
+        
+    def get_nuage(self):
+        return(self.x1, self.y1)
+        
+    def taille(self):
+        return(self.N)
+```
+- Initialisation:
+```
+class QTree():
+    def __init__(self, k, points, max_depth, _depth=0):
+        self.max_depth=10
+        self.threshold = k
+        self.points = points
+        self.root = Node(0, 0, 101, 101, self.points)
+        self.max_depth = max_depth
+        self._depth = _depth
+```
+
+
+
+
+
+
+
+
+
+
+
