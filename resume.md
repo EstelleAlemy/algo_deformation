@@ -230,7 +230,8 @@ La procédure suit en générale 3 étapes :
 2. Suppression des composante rotation, translation et échelles 
 
   - translation : correspond à un centrage des données sur l'origine
-	<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(A)=\sum{a})"/>
+	
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;c(A)=\frac{\sum{a}}{n}"/>
 
   - mise à l'échelle : correspond à une standardisation des données (division par la variance)
   - Rotation : trouver l'ange de rotation optimale entre les 2 distributions
