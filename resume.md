@@ -244,7 +244,16 @@ La procédure suit en générale 3 étapes :
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A=\frac{A}{s_a}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B=\frac{B}{s_b}"/>
+
   - Rotation : trouver l'ange de rotation optimale entre les 2 distributions
 
 On utilise la décomposition en valeurs singulières des distribution (SVD) pour obtenir
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;R=VU^{T}"/>
+
+On peut illustrer ces différentes étapes avec l'image ci-dessous
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotat.gif"/>
+
+3. Calculer la distance pour passer de l’objet B à l’objet A.
+
+## Application
+
