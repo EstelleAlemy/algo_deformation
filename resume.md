@@ -17,7 +17,7 @@ Que l'on peut formuler comme ci-dessous:
 *  Le modèle de transformation, qui spécifie la manière de l’image source peut être modifiée pour correspondre à la cible.
 *  Le processus d'optimisation qui fait varier les paramètres du modèle de transformation pour maximiser l'appariement critère.
 
-
+Dans les partie suivantes on va voir les blocs de fonctions de bases que l'on a implémenté dans l'objectif de compser un algoritme de recalage. 
 
 ## 1) La distance de Hausdorff (Mesure de similarité)
 
@@ -70,7 +70,7 @@ On a comparé notre résultat à la fonction **directed_hausdorff** de **_scipy.
 d=max(directed_hausdorff(a, b)[0], directed_hausdorff(b, a)[0])
 ```
 
-## 2)Implémentation Octree
+## 2) Implémentation Octree
 
 Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfant. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. L'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points noeuds de l'octree.
 
@@ -216,3 +216,23 @@ Images résultante de l'application d'une octree sur un nuage de points (code ex
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/octree.png"/>
 
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/octree_plane.png"/>
+
+
+## 3) Alignement de Procuste
+
+### Définition théorique 
+Pour deux nuages de points A et B (ou forme) l'alignement de procuste à pour but de trouver la transformation qui nous permet de passer de A vers B.
+
+La procédure suit en générale 3 étapes :
+
+1. Rechercher, dans la forme à étudier, un certain nombre de points considérés comme des points de références ou points d'intérêts.
+
+2. Suppression des composante rotation, translation et échelles 
+
+  - translation : correspond à un centrage des données sur l'origine
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;ca=\sum_{i=0,\ i}^n a_{i}/n"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;cb=\sum_{i=0,\ i}^n b_{i}/n"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;A= A-ca"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;B= B-cb"/>
+  - mise à l'échelle : correspond à une standardisation des données (division par la variance)
+  - Rotation : trouver l'ange de rotation optimale entre les 2 distributions
