@@ -124,12 +124,67 @@ class QTree():
         self._depth = _depth
 ```
 
+3. Division récursive
 
+On va appliquer la fonction **recursive_subdivide** à la racine.
+```
+    def subdivide_qad(self):
+        recursive_subdivide(self.root, self.threshold, self._depth, self.max_depth)
+```
+Cette fonction récursive divise en 2 les positions x et y maximale, séparant ainsi l'espace en quatre partie(noeuds) à chaque récursion. La fonction s'arrête quand on au maximum k point dans chaque partie de l'espace où que l'on atteint le nombre de récursion maximal.
 
+Remarque: la fonctions **contains** utilisé dans **recursive_subdivide** sert à rechercher les points dans chaque partie de l'espace.
+```
+def recursive_subdivide(node, k, depth, max_depth):
+    if len(node.points)<=k or depth >= max_depth:
+        return
 
+    w_ = float(node.width/2)
+    h_ = float(node.height/2)
 
+    new_depth = depth + 1
+    p = contains(node.x0, node.y0, w_, h_, node.points)
+    x1 = Node(node.x0, node.y0, w_, h_, p)
+    recursive_subdivide(x1, k, new_depth, max_depth)
 
+    p = contains(node.x0, node.y0+h_, w_, h_, node.points)
+    x2 = Node(node.x0, node.y0+h_, w_, h_, p)
+    recursive_subdivide(x2, k, new_depth, max_depth)
+    
+    p = contains(node.x0+w_, node.y0, w_, h_, node.points)
+    x3 = Node(node.x0 + w_, node.y0, w_, h_, p)
+    recursive_subdivide(x3, k, new_depth, max_depth)
 
+    p = contains(node.x0+w_, node.y0+w_, w_, h_, node.points)
+    x4 = Node(node.x0+w_, node.y0+h_, w_, h_, p)
+    recursive_subdivide(x4, k, new_depth, max_depth)
+
+    node.children = [x1, x2, x3, x4]
+
+def contains(x, y, w, h, points):
+    pts = []
+    for point in points:
+        if point.x >= x and point.x <= x+w and point.y>=y and point.y<=y+h:
+            pts.append(point)
+    return pts
+```
+3. Récupération des noeuds
+
+Une fois la division récursive appliquée on retourne les enfant de chaque noeuds afin de récuperer les noeuds de la quadtree. Et on se sert des position des noeuds pour dessiner l'octree.
+```
+def get_node(self):
+        c = find_children(self.root)
+        for n in c:
+            print(n.x0, n.y0)
+            for p in n.points:
+                p.rep()
+            print()
+        return
+```
+**Résultat :**
+
+On a appliquée notre algorithme sur un nuage de 100 points, on à fixé le nombre de points par espace à k=2 et le profondeur max à p=8.
+Et on obtient les figures suivantes
 
 
 
