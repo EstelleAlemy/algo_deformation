@@ -184,7 +184,7 @@ def get_node(self):
 **Résultat :**
 
 On a appliquée notre algorithme sur un nuage de 100 points, on à fixé le nombre de points par espace à k=2 et le profondeur max à p=8.
-Et on obtient les figures suivantes
+Et on obtient les figures suivantes, le code pour les exemples se trouve dans le fichier test.py
 
 Nuage de points de Base
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/nuage2D.png"/>
@@ -193,5 +193,20 @@ Après quadtree
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quad2D.png"/>
 
 
+### a) Octree
 
+L'Octree suit le même principe que quadtree précédemment expliquer. Dans le cas de l'octree l'espace est en 3 dimensions donc l'espace est séparé en 8 sous parite. Pour implémenter l'octree on a ajouter l'équivalent d'une dimension en plus au code utilisés pour quadtree.
 
+```
+class QTree3D():
+    def __init__(self, k, points, max_depth, _depth=0):
+        self.max_depth=10
+        self.threshold = k
+        self.points = points
+        self.root = Node3D(0, 0, 0, 101, 101, 101, self.points)
+        self.max_depth = max_depth
+        self._depth = _depth
+```
+**Résultats :**
+
+Images résultante de l'application d'une octree sur un nuage de points (code exemple dans test.py)

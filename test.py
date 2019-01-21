@@ -40,7 +40,7 @@ points=qd.Nuage3D(10)
 list_point=points.make_point_list()
 points.Graph()
 
-tree=qd.QTree3D(2,list_point, 8)
+tree=qd.QTree3D(3,list_point, 8)
 
 ct=tree.subdivide_oct()
 tree.get_node()

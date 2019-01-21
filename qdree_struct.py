@@ -12,7 +12,7 @@ Created on Mon Dec 10 23:31:27 2018
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import Rectangle
-
+from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 from itertools import product, combinations
 
