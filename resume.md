@@ -79,7 +79,7 @@ Une octree est une structure de type arbre dans laquelle chaque noeud possède h
 
 Une quadtree est une structure arbre où chaque noeud possèdent quatre enfant. On l'utilise pour partitionner un espace bidimensionnel en le subdivisent récursivement en quatre noeuds.
 
-<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quadtree.png" width="200" height="200"/>
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quadtree.png" width="400" height="450"/>
 
 On a commencé par travaillé sur des nuage de points en 2D dimensions et donc implémenter une quadtree dans ce cas. 
 L'ensemble des implémentations pour la quadtree sont définit dans le fichier **qdree_struct.py** qui implémente des objet de type octree et quadtree.
@@ -251,7 +251,7 @@ On utilise la décomposition en valeurs singulières des distribution (SVD) pour
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;R=VU^{T}"/>
 
 On peut illustrer ces différentes étapes avec l'image ci-dessous
-<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotat.gif" width="250"/>
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotat.gif" width="400" height="450"/>
 
 3. Calculer la distance pour passer de l’objet B à l’objet A.
 
@@ -262,7 +262,23 @@ On a implémenté une fonction pour génerer un exemple d'alignement de procrust
 1. On a définit une distribution de points x de manière aléatoire.
 
 2. On a appliquer une matrce de rotation sur x pour obtenir 2 distribution distincts:
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}
-   							     a_1 & b_1 \\
-   							     a_2 & b_2 
-							    \end{pmatrix}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}\cos(\theta)&-\sin(\theta)\\\sin(\theta)&\cos(\end{pmatrix}"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
