@@ -402,7 +402,10 @@ class QTree3D():
                 if np.sum(np.abs(s-e)) == r[1]-r[0]:
                     ax.plot3D(*zip(s, e), color="b")
                     
-                            
+         
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_zlabel('Z')                   
         plt.show()
         return
         

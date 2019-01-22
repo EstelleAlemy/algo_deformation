@@ -36,11 +36,11 @@ tree.graph()
 
 
 #%%% Essaie de la forme 3D
-points=qd.Nuage3D(10)
+points=qd.Nuage3D(25)
 list_point=points.make_point_list()
 points.Graph()
 
-tree=qd.QTree3D(2,list_point, 8)
+tree=qd.QTree3D(4,list_point, 8)
 
 ct=tree.subdivide_oct()
 tree.get_node()

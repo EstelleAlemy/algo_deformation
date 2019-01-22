@@ -255,5 +255,6 @@ On peut illustrer ces différentes étapes avec l'image ci-dessous
 
 3. Calculer la distance pour passer de l’objet B à l’objet A.
 
-## Application
+### Application
+
 
