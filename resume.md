@@ -294,7 +294,7 @@ _,U2=LA.eig(X2@X2.T)
 ```
 newX  = U2@U1.T@X1
 ```
-<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotaion.png"/>
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotation.png"/>
 
 
 
