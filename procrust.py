@@ -37,10 +37,14 @@ plt.show()
 
 #%%
 #centrage de la matricce
-x =  x - x.mean(axis=1)[:,np.newaxis]
+moy=x.mean(axis=1)[:,np.newaxis]
+x =  x - moy
 
 X1=R1@x
 X2=R2@x
+
+X1=X1/x.std()
+X2=X2/x.std()
 
 plt.figure()
 plt.scatter(X1[0,:], X1[1,:], c='b', marker='x')
@@ -58,10 +62,12 @@ _,U2=LA.eig(X2@X2.T)
 #plt.scatter(newX[0,:], newX[1,:], c='m', marker='p')
 
 newX  = U2@U1.T@X1
+
 plt.figure()
-plt.scatter(X1[0,:], X1[1,:], c='b', marker='x')
-plt.scatter(X2[0,:], X2[1,:], c='r', marker='v')
-plt.scatter(newX[0,:], newX[1,:], c='k', marker='p')
+plt.scatter(X1[0,:], X1[1,:], c='b', marker='x', label='X1')
+plt.scatter(X2[0,:], X2[1,:], c='r', marker='v', label='X2')
+plt.scatter(newX[0,:], newX[1,:], c='k', marker='p', label='X1 after')
+plt.legend()
 plt.show()
 
 

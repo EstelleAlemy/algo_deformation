@@ -257,13 +257,44 @@ On peut illustrer ces différentes étapes avec l'image ci-dessous
 
 ### Application
 
-On a implémenté une fonction pour génerer un exemple d'alignement de procrust en python dans le fichier **procrust.py**, on a suivit 4 étapes:
+On a implémenté une fonction pour génerer un exemple d'alignement de procrust en python dans le fichier **procrust.py**, on a suivit 5 étapes:
 
 1. On a définit une distribution de points x de manière aléatoire.
 
-2. On a appliquer une matrce de rotation sur x pour obtenir 2 distribution distincts:
-<img align="center" src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}\cos(\theta)&-\sin(\theta)\\\sin(\theta)&\cos(\theta)\end{pmatrix}"/>
+2. On a appliquer une matrice de rotation sur x pour obtenir 2 distribution distincts:
+	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}\cos(\theta)&-\sin(\theta)\\\sin(\theta)&\cos(\theta)\end{pmatrix}"/>
 
+```
+def M_rotate(teta):
+     R=np.array([[np.cos(teta), -np.sin(teta)],
+                 [np.sin(teta), np.cos(teta)]])
+     return(R)
+# Génération des matrices de point 2D en colonnes
+x=np.random.randint(101, size=(2,200))
+
+#Orientation des données de 45° et -45°
+R1=M_rotate(20)
+R2=M_rotate(-45)
+
+X1=R1@x
+X2=R2@x
+```
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/distribution.png"/>
+
+3. On centre les distributions
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/dist_centre.png"/>
+
+4. On calcule les vecteur propres des matrices de covariancese de X1 et X2
+```
+_,U1=LA.eig(X1@X1.T)
+_,U2=LA.eig(X2@X2.T)
+```
+
+5. On applique la rotation: ici on fait une rotation de la distribution X1(bleu) vers X2(rouge)
+'''
+newX  = U2@U1.T@X1
+'''
+<img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotaion.png"/>
 
 
 
