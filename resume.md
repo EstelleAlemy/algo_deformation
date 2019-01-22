@@ -4,9 +4,9 @@
 
 Que l'on peut formuler comme ci-dessous:
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\min{f(I1,t(I2))}_{t\in{T}}"/>
+<img align="center" src="https://latex.codecogs.com/svg.latex?\Large&space;\min{f(I1,t(I2))}_{t\in{T}}"/>
 
-- I1 et I2 images à recaler ou information extraites de ces images
+- I1 et I2 images à recaler ou informations extraites de ces images
 - t: transformation
 - T ensemble de des transformation admissible
 - f critère de dissimilarité ou de similarité
@@ -14,20 +14,21 @@ Que l'on peut formuler comme ci-dessous:
 3 critères pour composer un algorithme de déformation/recalage :
 
 *  La mesure de similarité(distance) qui définit la concordance de deux images.
-*  Le modèle de transformation, qui spécifie la manière de l’image source peut être modifiée pour correspondre à la cible.
+*  Le modèle de transformation, qui spécifie la façon dont l'image source peut être modifiée pour correspondre à la cible.
 *  Le processus d'optimisation qui fait varier les paramètres du modèle de transformation pour maximiser l'appariement critère.
 
-Dans les partie suivantes on va voir les blocs de fonctions de bases que l'on a implémenté dans l'objectif de compser un algoritme de recalage. 
+Dans les partie suivantes on va voir les blocs de fonctions de bases que l'on a implémenté dans l'objectif de composer un algoritme de recalage. 
 
 ## 1) La distance de Hausdorff (Mesure de similarité)
 
 ### définition théorique
-La distance de Hausdorff est un outil mathématique permettant  mesure l’éloignement entre deux ensembles de point. Pour mesurer celle-ci, on prend la plus grandes de toutes les distances d’un ensemble, au point le plus proches dans un autres ensemble, ce qui se traduit par cette formule :
+La distance de Hausdorff est un outil mathématique permettant  mesurer l’éloignement entre deux ensembles de points. Pour mesurer celle-ci, on prend la plus grandes de toutes les distances d’un ensemble, au point le plus proches dans un autre ensemble, ce qui se traduit par cette formule :
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;h(A,B)=\max{({\min{{d(a,b)}})}" title="\Large x=\max_{A,B}" />
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;a\in{A}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;b\in{B}"/>
-avec A et B deux sous ensemble distinct et d une mesure de distance entre 2 points (exemple la distance euclienne).
+avec A et B deux sous ensembles distincts et d une mesure de distance entre 2 points (exemple la distance euclienne).
+
 
 
 On note que la distance de Hausdorff est asymétrique c’est à dire que h(A,B) n’est pas égale à h(B,A), ceci est une propriété des fonction de types maxmin, donc on généralise la distance de Hausdorff avec cette formule :
@@ -41,7 +42,7 @@ On peut dire que A et B sont proches si tous les point de A sont proches d’un 
 ### Application
 
 Le fichier **haussdorff.py**, est la définition de notre fonction qui calcule la distance de hausdorff pour des nuages de points 2D créés artificiellement.
-Pour définir cette fonction  on suit 3 étapes:
+Pour définir cette fonction on suit 3 étapes:
 
 - Matrice euclidienne: on calcule une matrice qui contient les distances euclidiennes entres tous les points de 2 ensemble A et B
 - On calcule h1 et h2 qui corresponde à l'équation 1
@@ -72,7 +73,7 @@ d=max(directed_hausdorff(a, b)[0], directed_hausdorff(b, a)[0])
 
 ## 2) Implémentation Octree
 
-Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfant. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. L'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points noeuds de l'octree.
+Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfants. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. L'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points noeuds de l'octree.
 
 
 ### a) Quadtree
@@ -81,7 +82,7 @@ Une quadtree est une structure arbre où chaque noeud possèdent quatre enfant. 
 
 <img align="center"  src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quadtree.png" width="450" height="450"/>
 
-On a commencé par travaillé sur des nuage de points en 2D dimensions et donc implémenter une quadtree dans ce cas. 
+On a commencé par travailler sur des nuages de points en 2D dimensions et donc implémenter une quadtree dans ce cas. 
 L'ensemble des implémentations pour la quadtree sont définit dans le fichier **qdree_struct.py** qui implémente des objet de type octree et quadtree.
 
 **Implémentation :**
@@ -89,7 +90,7 @@ Pour implémenter on a suivit 4 étapes:
 
 1. Nuage de points
 
- On creer un nuage de points aléatoires(valeur entre 0 et 100) de taille N, contients une liste de N points 2D ayant une coordonnées x et y.
+ On creer un nuage de points aléatoires(valeur entre 0 et 100) de taille N, contients une liste de N points 2D ayant une coordonnée x et y.
 ```
 class Nuage():
     def __init__(self, N):
@@ -112,7 +113,7 @@ class Nuage():
 
 Notre structure va prendre un premier noeud racine qui contient les position x et y minimum (0,0) et les positions x,y maximal(101, 101), ainsi que l'ensemble des points du nuage de points et n'a pas d'enfants. 
 
-On définit aussi le treshold qui est le nombre de points maximale que l'on veut dans chaque partie de l'espace ainsi que la profondeur maximale qui est le nombre de récursion maximal autorisée (au-dela de cette limite l'algo s'arrête même-ci le treshold n'est pas atteint).
+On définit aussi le _treshold_ qui est le nombre de points maximal que l'on veut dans chaque partie de l'espace ainsi que la *max_depth*  qui est le nombre de récursion maximales autorisées (au-dela de cette limite l'algo s'arrête même-ci le treshold n'est pas atteint).
 ```
 class QTree():
     def __init__(self, k, points, max_depth, _depth=0):
@@ -170,7 +171,7 @@ def contains(x, y, w, h, points):
 ```
 3. Récupération des noeuds
 
-Une fois la division récursive appliquée on retourne les enfant de chaque noeuds afin de récuperer les noeuds de la quadtree. Et on se sert des position des noeuds pour dessiner l'octree.
+Une fois la division récursive appliquée on retourne les enfants de chaque noeud afin de récuperer les noeuds de la quadtree. Et on se sert des position des noeuds pour dessiner l'espace de quadtree.
 ```
 def get_node(self):
         c = find_children(self.root)
@@ -184,7 +185,7 @@ def get_node(self):
 **Résultat :**
 
 On a appliquée notre algorithme sur un nuage de 100 points, on à fixé le nombre de points par espace à k=2 et le profondeur max à p=8.
-Et on obtient les figures suivantes, le code pour les exemples se trouve dans le fichier test.py
+Et on obtient les figures suivantes, le code pour les exemples se trouve dans le fichier **test.py**.
 
 Nuage de points de Base
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/nuage2D.png"/>
@@ -195,7 +196,7 @@ Après quadtree
 
 ### a) Octree
 
-L'Octree suit le même principe que quadtree précédemment expliquer. Dans le cas de l'octree l'espace est en 3 dimensions donc l'espace est séparé en 8 sous parite. Pour implémenter l'octree on a ajouter l'équivalent d'une dimension en plus au code utilisés pour quadtree.
+L'Octree suit le même principe que quadtree précédemment expliquer. Dans le cas de l'octree l'espace est en 3 dimensions donc l'espace est séparé en 8 sous parties. Pour implémenter l'octree on a ajouter l'équivalent d'une dimension en plus aux codes utilisés pour quadtree.
 
 ```
 class QTree3D():
@@ -227,7 +228,7 @@ La procédure suit en générale 3 étapes :
 
 1. Rechercher, dans la forme à étudier, un certain nombre de points considérés comme des points de références ou points d'intérêts.
 
-2. Suppression des composante rotation, translation et échelles 
+2. Suppression des composante rotation, translation et échelle
 
   - translation : correspond à un centrage des données sur l'origine
 
@@ -237,7 +238,7 @@ La procédure suit en générale 3 étapes :
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;A={A-\bar{a}}"/>
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;B={B-\bar{b}}"/>
 
-  - mise à l'échelle : correspond à une standardisation des données (division par la variance)
+  - mise à l'échelle : correspond à une standardisation des données (division par l'écart-type)
 
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_a=\frac{\sum_{i=1}^{n}{\sqrt{(a_i-\bar{a})^2}}}{n}"/>  
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;s_b=\frac{\sum_{i=1}^{n}{\sqrt{(b_i-\bar{b})^2}}}{n}"/>
@@ -261,7 +262,7 @@ On a implémenté une fonction pour génerer un exemple d'alignement de procrust
 
 1. On a définit une distribution de points x de manière aléatoire.
 
-2. On a appliquer une matrice de rotation sur x pour obtenir 2 distribution distincts:
+2. On a appliquer une matrice de rotation sur x pour obtenir 2 distributions distinctes:
 	<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}\cos(\theta)&-\sin(\theta)\\\sin(\theta)&\cos(\theta)\end{pmatrix}"/>
 
 ```
@@ -296,10 +297,21 @@ newX  = U2@U1.T@X1
 ```
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotation.png"/>
 
+## Sources
 
+[1](https://en.wikipedia.org/wiki/Procrustes_analysis)
 
+[2](https://en.wikipedia.org/wiki/Orthogonal_Procrustes_problem)
 
+[3](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.directed_hausdorff.html)
 
+[4](https://en.wikipedia.org/wiki/Hausdorff_distance)
+
+[5](ttps://kpully.github.io/Quadtrees/)
+
+[6](https://en.wikipedia.org/wiki/Quadtree)
+
+[7](http://cgm.cs.mcgill.ca/~godfried/teaching/cg-projects/98/normand/main.html)
 
 
 
