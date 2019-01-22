@@ -291,9 +291,9 @@ _,U2=LA.eig(X2@X2.T)
 ```
 
 5. On applique la rotation: ici on fait une rotation de la distribution X1(bleu) vers X2(rouge)
-'''
+```
 newX  = U2@U1.T@X1
-'''
+```
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/rotaion.png"/>
 
 
