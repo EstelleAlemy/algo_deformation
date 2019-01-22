@@ -262,7 +262,7 @@ On a implémenté une fonction pour génerer un exemple d'alignement de procrust
 1. On a définit une distribution de points x de manière aléatoire.
 
 2. On a appliquer une matrce de rotation sur x pour obtenir 2 distribution distincts:
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}\cos(\theta)&-\sin(\theta)\\\sin(\theta)&\cos(\theta)end{pmatrix}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large;\begin{pmatrix}\cos(\theta)&-\sin(\theta)\\\sin(\theta)&\cos(\theta)end{pmatrix}"/>
 
 
 
