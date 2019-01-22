@@ -307,7 +307,7 @@ newX  = U2@U1.T@X1
 
 [4](https://en.wikipedia.org/wiki/Hausdorff_distance)
 
-[5](ttps://kpully.github.io/Quadtrees/)
+[5](https://kpully.github.io/Quadtrees/)
 
 [6](https://en.wikipedia.org/wiki/Quadtree)
 
