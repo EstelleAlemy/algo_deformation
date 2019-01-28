@@ -4,9 +4,9 @@
 
 ## INTRODUCTION
 
-Tout d'abord introduisont la notion de forme puisque l'objectif du recalage sur des images 2D ou 3D est de mettre en correspondance des formes. Une forme selon le dictionnaire est l'organnisation des contours d'un objet. Une forme (géométrique) simple peut être définit comme un objet géométrique de base tel qu'un ensemble de deux ou plusieurs points, une ligne, une courbe, un plan, une figure plane (par exemple carré ou cercle en 2D), ou une figure solide (cube ou sphère en 3D). Mais dans toutes les formes géométrique on retrouve d'une par des points et de l'autres des arrêtes qui vont faire la liaison entre les points (dessiner le contours de la forme).
+Tout d'abord introduisons la notion de forme puisque l'objectif du recalage sur des images 2D ou 3D est de mettre en correspondance des formes. Une forme selon le dictionnaire est l'organisation des contours d'un objet. Une forme (géométrique) simple peut être définit comme un objet géométrique de base tel qu'un ensemble de deux ou plusieurs points, une ligne, une courbe, un plan, une figure plane (par exemple carré ou cercle en 2D), ou une figure solide (cube ou sphère en 3D). Mais dans toutes les formes géométriques on retrouve d'une par des points et de l'autres des arrêtes qui vont faire la liaison entre les points (dessiner le contours de la forme).
 
-Le recalage correspond à l'estimatione d'une transformation géométrique permettant la superposition spatiale des structures anatomiques ou fonctionnelles présentes dans les images où formes à recaler.
+Le recalage correspond à l'estimation d'une transformation géométrique permettant la superposition spatiale des structures anatomiques ou fonctionnelles présentes dans les images où formes à recaler.
 Que l'on peut formuler comme ci-dessous:
 
 <img align="center" src="https://latex.codecogs.com/svg.latex?\Large&space;\min{f(I1,t(I2))}_{t\in{T}}"/>
@@ -27,7 +27,8 @@ On peut définir plusieurs contexte appliatif du recalage qui sont:
 * Le recalage inter-individu (plusieurs sujet ou bien un sujet face un modèle de référence)
 * La correction de distorsion dans géométriques dans une images.
 
-Le recalage d'image à deux nombreuses applications dans le domaine médical dans lequel il permet par exemple de fusionner les images d'un même patient mais pas seulement le recalage d'image à des application dans la reconnaissance faciale (calculer la déformation entre 2 visage) où encore dans des problèmes de cartographie (effectuer la carte de disparité d'une image).
+Le recalage d'image à deux nombreuses applications dans le domaine médical dans lequel il permet par exemple de fusionner les images d'un même patient mais pas seulement le recalage d'image à des application en reconnaissance faciale (calculer la déformation entre 2 visage) où encore dans des problèmes de cartographie (effectuer la carte de disparité d'une image).
+
 Dans les partie suivantes on va voir les blocs de fonctions de bases que l'on a implémenté dans l'objectif de composer un algoritme de recalage. 
 
 ## 1) La distance de Hausdorff (Mesure de similarité)
