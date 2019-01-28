@@ -1,7 +1,12 @@
 # Rapport algorithme de déformation non rigide
 
-**Objectif:** Déterminer une transformation spatial qui relie les positions dans une image aux positions correspondantes dans une ou plusieurs autres images. Puis appliquer cette transformation à des données 3D.
+**Objectif:** Déterminer ou estimer une transformation spatial qui relie les positions dans une image aux positions correspondantes dans une ou plusieurs autres images. Puis appliquer cette transformation à des données 3D.
 
+## INTRODUCTION
+
+Tout d'abord introduisont la notion de forme puisque l'objectif du recalage sur des images 2D ou 3D est de mettre en correspondance des formes. Une forme selon le dictionnaire est l'organnisation des contours d'un objet. Une forme (géométrique) simple peut être définit comme un objet géométrique de base tel qu'un ensemble de deux ou plusieurs points, une ligne, une courbe, un plan, une figure plane (par exemple carré ou cercle en 2D), ou une figure solide (cube ou sphère en 3D). Mais dans toutes les formes géométrique on retrouve d'une par des points et de l'autres des arrêtes qui vont faire la liaison entre les points (dessiner le contours de la forme).
+
+Le recalage correspond à l'estimatione d'une transformation géométrique permettant la superposition spatiale des structures anatomiques ou fonctionnelles présentes dans les images où formes à recaler.
 Que l'on peut formuler comme ci-dessous:
 
 <img align="center" src="https://latex.codecogs.com/svg.latex?\Large&space;\min{f(I1,t(I2))}_{t\in{T}}"/>
@@ -11,12 +16,18 @@ Que l'on peut formuler comme ci-dessous:
 - T ensemble de des transformation admissible
 - f critère de dissimilarité ou de similarité
 
-3 critères pour composer un algorithme de déformation/recalage :
-
+Ainsi pour mettre en place un systeme de recalage de forme ou d'image on doit définir 4 critères:
+*  L'information à mettre en correspondance (exemple :points d'intérets) 
 *  La mesure de similarité(distance) qui définit la concordance de deux images.
 *  Le modèle de transformation, qui spécifie la façon dont l'image source peut être modifiée pour correspondre à la cible.
 *  Le processus d'optimisation qui fait varier les paramètres du modèle de transformation pour maximiser l'appariement critère.
 
+On peut définir plusieurs contexte appliatif du recalage qui sont:
+* Le recalage intra-individu, les images viennent du même sujet (ex: plusieurs images d'une tumeur dans le temps
+* Le recalage inter-individu (plusieurs sujet ou bien un sujet face un modèle de référence)
+* La correction de distorsion dans géométriques dans une images.
+
+Le recalage d'image à deux nombreuses applications dans le domaine médical dans lequel il permet par exemple de fusionner les images d'un même patient mais pas seulement le recalage d'image à des application dans la reconnaissance faciale (calculer la déformation entre 2 visage) où encore dans des problèmes de cartographie (effectuer la carte de disparité d'une image).
 Dans les partie suivantes on va voir les blocs de fonctions de bases que l'on a implémenté dans l'objectif de composer un algoritme de recalage. 
 
 ## 1) La distance de Hausdorff (Mesure de similarité)
