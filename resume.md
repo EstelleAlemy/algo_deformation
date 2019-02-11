@@ -87,8 +87,27 @@ d=max(directed_hausdorff(a, b)[0], directed_hausdorff(b, a)[0])
 
 Une octree est une structure de type arbre dans laquelle chaque noeud possède huit enfants. Dans notre cas l'octree correspond à l'application d'une quadtree en trois dimension. L'octree est utilisé pour réduire les dimensions, plutôt que de servir de l'ensemble des points on va appliquer la transformation sur les points noeuds de l'octree.
 
+Les octrees sont très utilisés, car ils permettent une recherche de voisins efficace et une subdivision adaptative. Il en résulte un grand nombre d'applications :
 
-### a) Quadtree
+- la détection de collision en trois dimensions dans les logiciels de CAO ou les moteurs physiques
+- le sparse voxel octree pour réaliser du ray-casting (calcule d'images de synthèses accélérés)
+- l'élimination des objets hors du cône de vue dans le cadre d'un rendu 3D 
+- les maillages, d'une manière générale, notamment dans le cadre de la méthode des éléments finis ;
+- le problème à n corps
+
+**Vocabulaire**
+
+Définissons un peu de vocabulaire qui indique les éléments essentiel à une octree:
+
+- un nœud est un élément de l'arbre. Dans un octree, un nœud correspond à un cube dans l'espace 3D à partitionner
+- la racine d'un arbre est l'unique nœud ne possédant pas de parent, il permet d'accéder à tous les éléments de l'arbre (dans l'espace c'est le premier cube)
+- un nœud interne est un élément qui a des fils (huit dans notre cas) 
+- une feuille de l'arbre est un nœud qui n'a pas de fils
+- la profondeur (à fixer) nombre d'itérations maximal pour réaliser l'octree
+- le seuil (treshold) nombre d'information (ici des points) maximal à stocker dans un noeuds avant séparation.
+
+## Application
+#### a) Quadtree
 
 Une quadtree est une structure arbre où chaque noeud possèdent quatre enfant. On l'utilise pour partitionner un espace bidimensionnel en le subdivisent récursivement en quatre noeuds.
 
@@ -206,7 +225,7 @@ Après quadtree
 <img src="https://github.com/EstelleAlemy/algo_deformation/blob/master/image/quad2D.png"/>
 
 
-### a) Octree
+#### a) Octree
 
 L'Octree suit le même principe que quadtree précédemment expliquer. Dans le cas de l'octree l'espace est en 3 dimensions donc l'espace est séparé en 8 sous parties. Pour implémenter l'octree on a ajouter l'équivalent d'une dimension en plus aux codes utilisés pour quadtree.
 

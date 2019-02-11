@@ -283,29 +283,55 @@ class QTree():
         
     def get_node(self):
         c = find_children(self.root)
+        node_list={}
         for n in c:
-            print(n.x0, n.y0)
-            for p in n.points:
-                p.rep()
-            print()
-        return
-    
+            node_list[(n.x0, n.y0)]=[n.height]
+        return(node_list)
+        
+    def range_query(self,x, y):
+        c = find_children(self.root)
+        for n in c:
+            if n.x0==x and n.y0==y:
+                return n.points
+            
+    def tree_query(self,x,y,a,pts):
+        k=a[x,y][0]
+        neighbors=[]
+        pts=pts.make_point_list()
+        X = [point.x for point in pts]
+        Y = [point.y for point in pts]
+        for i in range(len(X)):
+            if (x<X[i]<=x+k) and (y<Y[i]<=y+k):
+                neighbors.append(Point(X[i],Y[i]))
+        return (neighbors)
     # Graphique du quadtree
     def graph(self):
         fig = plt.figure()
         plt.title("Quadtree")
         ax = fig.add_subplot(111)
         c = find_children(self.root)
-        print ("Number of segments: %d" %len(c))
-        areas = set()
-        for el in c:
-            areas.add(el.width*el.height)
-        print ("Minimum segment area: %.3f units" %min(areas))
         for n in c:
             ax.add_patch(patches.Rectangle((n.x0, n.y0), n.width, n.height, fill=False))
         x = [point.x for point in self.points]
         y = [point.y for point in self.points]
         plt.scatter(x, y, c='r', marker=".")
+        plt.show()
+        return
+    
+    def add_graph(self, news):
+        fig = plt.figure()
+        plt.title("Quadtree")
+        new=news.make_point_list()
+        ax = fig.add_subplot(111)
+        c = find_children(self.root)
+        for n in c:
+            ax.add_patch(patches.Rectangle((n.x0, n.y0), n.width, n.height, fill=False))
+        x = [point.x for point in self.points]
+        y = [point.y for point in self.points]
+        x2 = [point.x for point in new]
+        y2 = [point.y for point in new]
+        plt.scatter(x, y, c='r', marker=".")
+        plt.scatter(x2, y2, c='b', marker=".")
         plt.show()
         return
     
