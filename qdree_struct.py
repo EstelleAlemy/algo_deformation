@@ -285,14 +285,26 @@ class QTree():
         c = find_children(self.root)
         node_list={}
         for n in c:
-            node_list[(n.x0, n.y0)]=[n.height]
+            node_list[(n.x0, n.y0)]=n.height
+        # ajout des extrema
+        b=list(node_list.keys())
+        for n in b:
+            if not (n[0],n[1]+node_list[n]) in b:
+                node_list[ (n[0],n[1]+node_list[n]) ]=0.0
+            if not (n[0]+node_list[n],n[1]) in b:
+                node_list[ (n[0]+node_list[n],n[1]) ]=0.0
+        node_list[(101,101) ]=0.0
         return(node_list)
+        
+    def get_c(self):
+        return(find_children(self.root))
         
     def range_query(self,x, y):
         c = find_children(self.root)
         for n in c:
             if n.x0==x and n.y0==y:
                 return n.points
+           
             
     def tree_query(self,x,y,a,pts):
         k=a[x,y][0]
