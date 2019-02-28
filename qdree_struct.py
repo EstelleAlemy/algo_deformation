@@ -214,6 +214,28 @@ class Nuage():
              self.point_list.append(Point(self.x1[i],self.y1[i]))
         return(self.point_list)
         
+    def make_array_list(self):
+        x = [point for point in self.x1]
+        y = [point for point in self.y1]
+        pts=np.array([x,y])
+        return(pts)
+        
+    def make_mean(self):
+        x_mean=sum(self.x1)/self.N
+        y_mean=sum(self.y1)/self.N
+        self.x1=(self.x1-x_mean)
+        self.y1=(self.y1-y_mean)
+        return
+    
+    def make_echelle(self):
+        x=np.array(self.x1)
+        y=np.array(self.y1)
+        x_std=x.std()
+        y_std=y.std()
+        self.x1=self.x1/x_std
+        self.y1=self.y1/y_std
+        return
+        
     def Graph(self):
         x = [point for point in self.x1]
         y = [point for point in self.y1]
@@ -264,11 +286,12 @@ class Nuage3D():
 
 # Calculer le quadtree d'un nuage de point    
 class QTree():
-    def __init__(self, k, points, max_depth, _depth=0):
+    def __init__(self, k, points, max_depth, Min, _depth=0):
         self.max_depth=10
         self.threshold = k
         self.points = points
-        self.root = Node(0, 0, 101, 101, self.points)
+        self.min=Min
+        self.root = Node(self.min, self.min, abs(self.min)*2, abs(self.min)*2, self.points)
         self.max_depth = max_depth
         self._depth = _depth
         
@@ -290,12 +313,19 @@ class QTree():
         b=list(node_list.keys())
         for n in b:
             if not (n[0],n[1]+node_list[n]) in b:
-                node_list[ (n[0],n[1]+node_list[n]) ]=0.0
+                node_list[ (n[0],n[1]+node_list[n]) ]=-1*self.min
             if not (n[0]+node_list[n],n[1]) in b:
-                node_list[ (n[0]+node_list[n],n[1]) ]=0.0
-        node_list[(101,101) ]=0.0
+                node_list[ (n[0]+node_list[n],n[1]) ]=-1*self.min
+        node_list[(-1*self.min,-1*self.min) ]=-1*self.min
         return(node_list)
         
+    def get_indice(self,node):
+        mini=node[min(node, key=node.get)]
+        indice={}
+        for n in node.keys():
+            indice[n]=[int(n[0]/mini),int(n[1]/mini) ]
+        return (indice)
+    
     def get_c(self):
         return(find_children(self.root))
         
