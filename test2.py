@@ -16,12 +16,13 @@ from scipy.optimize import least_squares
 import random, math
 
 
-
+# Fonction de rotation 
 def M_rotate(teta):
      R=np.array([[np.cos(teta), -np.sin(teta)],
                  [np.sin(teta), np.cos(teta)]])
      return(R)
      
+# Fonction de récupéération des indices 
 def get_indec(a,b,mat):
     ar1=np.where(mat[0,:]==a)
     ar2=np.where(mat[1,:]==b)
@@ -34,6 +35,7 @@ N=50 #nb de pts
 points=qd.Nuage(N)
 points.Graph()
 
+# Création de la distribution des y
 Y=np.zeros((2,N))
 for i in range(N):
     a=np.random.randint(50,200)
@@ -44,13 +46,15 @@ plt.scatter(Y[0,:],Y[1,:], c='r', marker='.', label= 'valeur avec rotation')
 plt.title('Distribution de départ') 
 #%%
 #Y=M_rotate(90).T@pts
-   
+
+# normalistion et standardisation de la distribution de point
 points.make_mean()
 points.make_echelle()
 points.Graph()
 pts=points.make_array_list()
     
     
+# normalistion et standardisation de la distribution Y
 moy=np.mean(Y, axis=1)
 Y=Y.T-moy
 Y=Y.T
@@ -64,6 +68,7 @@ plt.title('Distributions de départ centrées et mise à l echelle')
 _,U1=LA.eig(Y@Y.T)
 _,U2=LA.eig(pts@pts.T)
 
+# rotation de la distribution Y
 newY  = U2@U1.T@Y
 plt.figure()
 plt.scatter(pts[0,:], pts[1,:], c='b', marker='.', label='X')
@@ -73,6 +78,7 @@ plt.legend()
 plt.title('Distributions retrait rotation')  
 
 #%%
+# liste des points de la distribution
 list_point=points.make_point_list()
 # Calcule de la quadtree
 tree=qd.QTree(4, list_point, 8, -2)
@@ -155,7 +161,7 @@ def func_cout_y(delta_T):
     res=LA.norm((A.T-By), 'fro')+alpha*LA.norm(delta_T, 'fro')
     return(res)
     
-    
+# fct de cout complète    
 def func_cout(delta_t):
     Ax=(newY[0,:]-mat_quad[0,:]@Tx)
     Ay=(newY[1,:]-mat_quad[1,:]@Ty)
@@ -172,13 +178,15 @@ def func_cout(delta_t):
 
 
 #%%
-
+# t de départ initialisé à 0
 t=np.zeros((len(node)*2))
+# optimisation
 res_1=least_squares(func_cout,t)
+# récupération de la valeur optimal
 rx=res_1.x
 
 
-#%%
+#%% # affichage des figures
 mat_quad2=np.copy(mat_quad)
 n=len(node)
 mat_quad2[0,:]=mat_quad2[0,:]+rx[0:n].T
